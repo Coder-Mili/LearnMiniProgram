@@ -88,7 +88,8 @@ git仓库：最终确定的文件保存到仓库，成为一个新的版本，�
 git status：查看状态
 git add 文件名：把工作区域的文件添加到暂存区
 git commit -m "提交描述"：把暂存区的文件提交到仓库
-
+git remote add orgin:本地仓库和远程仓库关联
+git push -u orgin master:将本地仓库添加到远程仓库中
 5.Git初始化及仓库创建和操作
 5.1 基本信息设置
 设置用户名：git config --global user.name '用户名'

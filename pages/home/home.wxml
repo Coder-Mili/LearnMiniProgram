@@ -1,3 +1,5 @@
 <!--pages/home/home.wxml-->
 <text class = 'title'>Hello World</text>
 <button size='mini'>按钮</button>
+<view>你好啊，李银河</view>
+<view>你好啊，李银河</view>
