@@ -1,0 +1,155 @@
+﻿小程序
+一、小程序的特点
+1.类似于Web开发模式，入门的门槛低：基本上是类似于html+scc+js;
+2.可直接云端更新：微信审核，无需经过App Store等平台；
+3.提升用户体验：通过提供基础能力、原生组件结合等方式，提升用户体验。
+4.平台管控能力：小程序提供云端更新，通过代码上传、审核等方式，增强对开发者的管控能力；
+5.双线程模型：逻辑层和渲染层分开加载，提供了管控和安全性（沙盒环境运行js代码，不允许执行任何和浏览器
+相关的接口，比如跳转页面、操作DOM等）；
+查看版本更新内容：
+http://developers/weixin.qq.com/miniprogramme/dev/framework/release/
+
+二、小程序开发主要分成三部分
+1.页面布局：WXML(Weixin mark language),类似于HTML
+2.页面样式：WXSS,几乎就是CSS(某些不支持，某些进行了增强)
+3.页面脚本：JavaScript+WXS,(JavaScript和WeixinScript)
+
+三、开发前准备工作
+1.申请AppID
+登录微信公众平台：http://mp.weixin.qq.com/
+选择小程序直接点击小程序开始注册即可。
+一个账号对应一个小程序；
+企业、政府、媒体、其他组织主体可以注册50个小程序。
+个体户和个人类型主体可注册5个小程序。
+2.下载开发工具
+开发工具的选择：官方微信Web开发者工具、VSCode
+
+四、应用程序的结构
+小程序结构划分:最上层App--->多个Page---->多个组件(内置组件和自定义组件)
+1.App
+app.js:创建App实例的代码以及一些全局相关的内容
+app.json:全局的一些配置，比如window/tabbar等,是整个程序的入口,里面是一个类似于对象的{},
+{}里面必须有"pages"字段，"pages"字段对应的是数组类型。json文件对语法有严格的要求，
+如果没有下一个字段，后面不能写有逗号
+app.wxss:全局的一些样式配置
+
+2.Page(必须的在App.json中注册,即在"pages"字段中写上页面的路径即可,"pages":["page"])
+page.js:创建Page实例的代码,以及页面相关的内容，每个页面的js文件中必须创建一个页面对象，Page({});
+需要传入对象的字面量。默认显示第一个页面。
+page.json:业务单独的配置，比如页面对应的Windows配置，usingComponents。创建完之后需要一个对象。
+page.wxml:页面的wxml布局代码
+page.wxss:页面的样式配置
+
+3.component
+component.js:创建component实例的代码，以及组件内部的内容。
+component.json:组件内部的配置，比如当前组件使用了别的组件。
+component.wxml:组件的wxml布局代码。
+component.wxss:组件的样式配置。
+
+使用Github
+一、目的
+借助github托管项目代码。
+二、基本概念
+1.仓库（Repository）
+仓库的意思，即你的项目，你想在GitHub上开源一个项目，那句必须要新建一个Repository，
+如果你开源的项目多了，你就拥有了多个Repository。
+2.收藏（Star）
+仓库主页star按钮，意思为收藏项目的人数。
+3.复制克隆项目（Fork）
+翻译为分叉，意思是你开源了一个项目，别人想在这个项目的基础上做些改进，然后应用到
+自己的项目中，这个时候他就可以Fork你的项目（打开项目主页点击右上角的fork按钮即可），
+然后他的GitHub主页上就多了一个项目，只不过这个项目是基于你的项目基础上（本质上是
+在原有的项目的基础上新建了一个分支），他就可以随心所欲的去改进，但是丝毫不会影响
+原有项目的的代码与结构。
+4.发起请求(Pull Request)
+发起请求，这个是基于Fork的，如果请求不错，可以合并到原仓库中。
+5.关注(Watch)
+如果你Watch了某个项目，那么以后只要这个项目有任何更新，你都会第一时间收到关于这
+个项目的通知提醒。
+6.事物卡片(lssue)
+发现代码BUG，但是目前没有成型代码，需要讨论时用。
+7.GitHub主页
+8.仓库主页
+9.个人信息
+三、注册GitHub账号
+1.官方网址：github.com
+2.因为GitHub在国外服务器所以访问较慢或者无法访问，需要翻墙(shadowsocks.exe)
+3.私有仓库只能自己或者指定的朋友才有权限操作，私有仓库是收费的。
+4.新注册的用户必须验证邮箱后才可以创建git仓库
+5.一个git库(仓库)对应一个开源项目，通过git管理git库
+四、git安装和使用
+1.目的：通过git管理GitHub托管项目代码
+2.下载地址：http://www.git-scm.com/download/win
+3.Git工作区域
+工作区：添加、编辑、修改文件等动作
+暂存区：暂存已经修改的文件，最后统一提交到git仓库中
+git仓库：最终确定的文件保存到仓库，成为一个新的版本，并且对他人可见
+4.向仓库中添加文件流程
+git status：查看状态
+git add 文件名：把工作区域的文件添加到暂存区
+git commit -m "提交描述"：把暂存区的文件提交到仓库
+
+5.Git初始化及仓库创建和操作
+5.1 基本信息设置
+设置用户名：git config --global user.name '用户名'
+设置用户名邮箱:git config --global user.email '邮箱地址'
+
+5.2 git init:创建.git文件
+touch 文件名：创建文件
+rm 文件名：删除文件
+git rm 文件名：从Git中删除文件
+git push:将本地仓库提交到远程
+git config --list: 查看初始化信息
+git clone 仓库地址：将远程仓库(github对应的项目)复制到本地
+
+五、GitHub Pages搭建网页
+1. 访问：https://用户名.github.io
+2. 搭建步骤：
+1). 创建个人站点--->新建仓库(注：仓库名必须是用户名.github.io)
+2). 在仓库下新建index.html的文件即可
+六、Preject Pages 项目站点
+访问： https://用户名.github.io/仓库名
+1.进入项目主页，点击settings
+2.在settings页面中，点击Launch automatic page generator 自动生成主题
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

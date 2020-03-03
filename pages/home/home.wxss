@@ -1,0 +1,13 @@
+/* pages/home/home.wxss */
+.title{
+  color: red;
+  font-size: 30px;
+}
+button{
+  position:fixed;
+  color: blue;
+  background-color: yellow;
+  font-weight: bold;
+  top: 50px;
+  left: 0px;
+}
